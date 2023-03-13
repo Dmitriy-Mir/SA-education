@@ -11,7 +11,7 @@
 Оставляем пустыми Server, Database, Port, Username
 и вводим пароль (мы создали его на этапе установки)
 
-![](/PostgreeSQL/1_RunShell.jpg)
+![](/PostgreeSQL/screen/1_RunShell.jpg)
 
 1. Сменить кодеровку, иначе получим иероглифы.
 Например, хотим получить список команд
