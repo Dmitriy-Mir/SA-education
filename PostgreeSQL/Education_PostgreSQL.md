@@ -2,12 +2,9 @@
 
 ### I. Установить (на ОС Windows 10)
 1. Скачать с офиц сайта.
-1. Установить с учетом некоторых параметров.
-
-[Источник.](https://www.youtube.com/watch?v=PfyC39EzTmk&list=PLPPIc-4tm3YQsdhSV1qzAgDKTuMUNnPmp&index=1)
+1. Установить с учетом некоторых параметров (см. в [видео](https://www.youtube.com/watch?v=PfyC39EzTmk&list=PLPPIc-4tm3YQsdhSV1qzAgDKTuMUNnPmp&index=1)).
 
 ### II. Создать БД, Подключиться, Удалить
-
 
 1. Запустить PostgreSQL Shell.
 Оставляем пустыми Server, Database, Port, Username
@@ -21,6 +18,9 @@
 ![](/PostgreeSQL/screen/2_ASCII.jpg)
 
 Если видим иероглифы, как на скриншоте, то выполняем 1-7 шаги, описанные ниже. Если с кодировкой все впорядке, то пропускаем этот пункт и переходим к [пункту 3](#point3).
+
+<details>
+<summary> 7 шагов, чтобы исправить кодировку для роботы с PostgreSQL в консоли </summary>
 
     1. Сначала нужно добавить путь для команды psql в переменные окружения Windows.
     Щелкните правой кнопкой мыши «Этот компьютер» -> «Свойства» -> «Дополнительные параметры системы» -> «Переменные среды».
@@ -48,8 +48,10 @@
 
     Далее работаем в терминале cmd.
     
-[Источник.](https://www.youtube.com/watch?v=-vFnDLJ1blg&list=PLPPIc-4tm3YQsdhSV1qzAgDKTuMUNnPmp&index=2)
+</details>
+
 
 3. <a name="point3"></a> Вывести список текущих таблиц (баз данных): `\l`
 
 
+[Источник.](https://www.youtube.com/watch?v=-vFnDLJ1blg&list=PLPPIc-4tm3YQsdhSV1qzAgDKTuMUNnPmp&index=2)
