@@ -3,6 +3,7 @@
 ### I. Установить (на ОС Windows 10)
 1. Скачать с офиц сайта.
 1. Установить с учетом некоторых параметров.
+
 [Источник.](https://www.youtube.com/watch?v=PfyC39EzTmk&list=PLPPIc-4tm3YQsdhSV1qzAgDKTuMUNnPmp&index=1)
 
 ### II. Создать БД, Подключиться, Удалить
@@ -13,7 +14,7 @@
 
 ![](/PostgreeSQL/screen/1_RunShell.jpg)
 
-1. Сменить кодеровку, иначе получим иероглифы.
+2. Сменить кодеровку, иначе получим иероглифы.
 Например, хотим получить список команд
 '\?'
 
@@ -25,13 +26,15 @@
     3. Перезапустить ПК.
     4. Проверить: запустить cmd, ввести команду 'psql', должно появиться поле с введением логина.
 
-    ![](/PostgreeSQL/screen/3_cmd.jpg)
+![](/PostgreeSQL/screen/3_cmd.jpg)
 
     5. Ввести 'psql -d postgres -U postgres', где '-d postgres' ключ d и имя БД, '-U postgres' ключ U и логин.
     7.  Ввести команду 'psql \! chcp 1251' и проверить с помощью команды '\?'
 
-    ![](/PostgreeSQL/screen/4_ASCII2.jpg)
+![](/PostgreeSQL/screen/4_ASCII2.jpg)
 
     Далее работаем в терминале cmd.
-
+    
 [Источник.](https://www.youtube.com/watch?v=-vFnDLJ1blg&list=PLPPIc-4tm3YQsdhSV1qzAgDKTuMUNnPmp&index=2)
+
+3. s
