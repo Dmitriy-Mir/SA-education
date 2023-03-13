@@ -50,8 +50,8 @@
     Далее работаем в терминале cmd.
     
 </details>
-
 <br>
+
 3. <a name="point3"></a> Вывести список текущих таблиц (баз данных): `\l`
 
 ![](/PostgreeSQL/screen/5_list_BD.jpg)
