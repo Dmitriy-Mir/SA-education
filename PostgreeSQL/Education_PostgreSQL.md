@@ -1,18 +1,18 @@
 # PostgreeSQL
 
-### I. Установить (на ОС Windows 10)
-1. Скачать с офиц сайта.
-1. Установить с учетом некоторых параметров (см. в [видео](https://www.youtube.com/watch?v=PfyC39EzTmk&list=PLPPIc-4tm3YQsdhSV1qzAgDKTuMUNnPmp&index=1)).
+### I. Установим на ОС Windows 10.
+1. Скачаем с офиц сайта.
+1. Установим с учетом некоторых параметров (см. в [видео](https://www.youtube.com/watch?v=PfyC39EzTmk&list=PLPPIc-4tm3YQsdhSV1qzAgDKTuMUNnPmp&index=1)).
 
-### II. Создать БД и Подключиться к ней
+### II. Создадим БД и подключимся к ней
 
-1. Запустить PostgreSQL Shell.
+1. Запустим PostgreSQL Shell.
 Оставляем пустыми Server, Database, Port, Username
 и вводим пароль (мы создали его на этапе установки)
 
 ![](/PostgreeSQL/screen/1_RunShell.jpg)
 
-2. Проверить кодировку. <br>
+2. Проверим кодировку. <br>
 Для этого выводим список команд. <br>
 Команда: `\?`
 
@@ -52,11 +52,11 @@
 </details>
 <br>
 
-3. <a name="point3"></a> Вывести список текущих таблиц (баз данных): `\l`
+3. <a name="point3"></a> Выведем список текущих таблиц (баз данных): `\l`
 
 ![](/PostgreeSQL/screen/5_list_BD.jpg)
 
-4. Создать базу данных
+4. Создадим базу данных
 
 `CREATE DATABASE nameBD;`
 
@@ -64,14 +64,14 @@
 
 ![](/PostgreeSQL/screen/6_create_BD.jpg)
 
-5. Подключиться к созданной БД
+5. Подключимся к созданной БД
 
 `\c nameBD`
 `\coninfo` - информация о подключении
 
 ![](/PostgreeSQL/screen/7_open_BD.jpg)
 
-### III. Создать таблицу. Работа с таблицей  
+### III. Создадим таблицу и поработаем с ней. 
 
 1. Создадим таблицу "**работник**" - **employee** с такими полями: <br>
 **id BIGSERIAL** - самоувеличивающийся идентификатор;  
@@ -127,5 +127,5 @@
 
 ![](/PostgreeSQL/screen/16_select_from.jpg)  
 
-### SQL запросы. Выборка данных  
+### IV. SQL запросы. Выборка данных.  
 
