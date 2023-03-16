@@ -96,7 +96,7 @@
 
     Также с помощью `DROP` можно удалить базу данных. Поэтому с этой командой нужно быть очень осторожным.
 
-4. Создадим таблицу **работник** снова, но теперь добавим огарничения для ФИО, ид, пол и ДР **NOT NULL** - *не могут быть пустыми*. И для id поставим метку **PRIMARY KEY** - *первичный ключ*.  
+4. Создадим таблицу **работник** снова, но теперь добавим огарничения для ФИО, ид, пол и ДР **NOT NULL** - *не могут быть пустыми*. И для id поставим метку **PRIMARY KEY** - *первичный ключ*.   
 
 ![](/PostgreeSQL/screen/12_create_table2.jpg)
 
@@ -130,4 +130,63 @@
 ![](/PostgreeSQL/screen/16_select_from.jpg)  
 
 ### IV. SQL запросы. Выборка данных.  
+
+1. **SELECT** - вывод данных.  
+`SELECT * FROM employee;` - вывод данных всей таблицы, `*` - означает **all** (все);  
+`SELECT first_name, last_name FROM employee;` - выведем из таблицы **employee** столбцы с именем и фамилией;  
+
+2. **ORDER BY** - сортировка.  
+`SELECT * FROM employee ORDER BY last_name;` - выведем всю таблицу отсортированную в порядке увеличения (от меншего к большему - такая сортировка идет всегда по умолчанию, если не задать особых условий) по столбцу last_name;  
+`SELECT * FROM employee ORDER BY last_name DESC;` - сортировка в обратном порядке;  
+
+3. **DISTINCT** - вывести только уникальные значения.  
+`SELECT DISTINCT gender FROM employee ORDER BY gender;` - выведем пол, неповторяющиеся записи (например хотим узнать какой вообще пол есть в таблице или из каких стран есть сотрудники, если добавить столбец со страной).  
+
+4. **WHERE** - логический оператор "Где", условие для выборки по конкретному значению.  
+`SELECT * FROM employee WHERE gender = 'Female';` - выведем только женщин; 
+**AND**   
+`SELECT * FROM employee WHERE gender = 'Female' AND first_name = 'Hanna';` - выведем женщин с именем Hanna;  
+**OR**  
+`SELECT * FROM employee WHERE gender = 'Female' AND (first_name = 'Hanna' OR first_name = 'Reta');` - женщины с именем Hanna и с именем Reta.  
+**LIMIT** - ограничить выборку количеством записей в табл
+`SELECT * FROM employee LIMIT 5;` - выведем 5 первых строк в таблице.  
+**OFFSET** - с какой позиции искать.
+`SELECT * FROM employee OFFSET 10 LIMIT 5;` - выведем 5 строк начиная с 10 позиции в таблице
+
+![](/PostgreeSQL/screen/17_select_from.jpg)
+
+**FETCH** - аналог **LIMIT**  
+`SELECT * FROM employee OFFSET 10 FETCH FIRST 5 ROW ONLY;` - также выведем 5 строк начиная с 10 позиции в таблице.  
+
+**IN** - перечислить несколько параметров для вывода  
+`SELECT * FROM employee WHERE first_name IN ('Nilson', 'Shara', 'Fulvia');` - вывели строки, где встречаются указанные имена.  
+
+**BETWEEN** - выбор промежутка (интервала/диапазона)  
+`SELECT * FROM employee WHERE date_of_birthd BETWEEN '2022-01-01' AND '2022-12-12';` - вывели сотрудников, у кого ДР попадает в диапазон '2022-01-01' AND '2022-12-12'  
+
+**LIKE** - поиск  
+`SELECT * FROM employee WHERE email LIKE '%.com';` - вывели все адреса почтовых ящиков с доменом *com*.  
+Чтобы не учитывался регистр (заглавные буквы) перед LIKE добавляем i = **iLIKE**  
+
+**COUNT** - подсчет количества повторений  
+`SELECT gender, COUNT(*) FROM employee GROUP BY gender;` - вывели количество, по сколько сотрудников каждого пола  
+
+![](/PostgreeSQL/screen/18_select_COUNT.jpg)  
+
+**HAVING** - условие (имеют)  
+`SELECT gender, COUNT(*) FROM employee GROUP BY gender HAVING COUNT(*) > 20;` - вывели пол сотрудников, количество которых встречается больше 20 раз  
+
+![](/PostgreeSQL/screen/19_select_COUNT_HAVING.jpg) 
+
+**AS** - присвоить выводимым параметрам свои произвольные имена (например, для удобтства представления)  
+`SELECT id, first_name AS name, last_name AS surname, date_of_birthd AS birthday FROM employee;` - вывели заголовки столбцов в более читабельном виде  
+
+![](/PostgreeSQL/screen/20_select_AS.jpg) 
+
+**COALESCE** - заполнить пустые значения  
+`SELECT COALESCE(email, 'not applicable') FROM employee;` - вывели список email и заполнили пустые строки значением *not applicable*  
+
+![](/PostgreeSQL/screen/21_select_COAL.jpg)
+
+### V. Базовая Арифметика и Агрегаты  
 
