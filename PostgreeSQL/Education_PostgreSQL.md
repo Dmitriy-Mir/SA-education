@@ -131,18 +131,18 @@
 
 ### IV. SQL запросы. Выборка данных.  
 
-1. **SELECT** - вывод данных.  
+**SELECT** - вывод данных.  
 `SELECT * FROM employee;` - вывод данных всей таблицы, `*` - означает **all** (все);  
 `SELECT first_name, last_name FROM employee;` - выведем из таблицы **employee** столбцы с именем и фамилией;  
 
-2. **ORDER BY** - сортировка.  
+**ORDER BY** - сортировка.  
 `SELECT * FROM employee ORDER BY last_name;` - выведем всю таблицу отсортированную в порядке увеличения (от меншего к большему - такая сортировка идет всегда по умолчанию, если не задать особых условий) по столбцу last_name;  
 `SELECT * FROM employee ORDER BY last_name DESC;` - сортировка в обратном порядке;  
 
-3. **DISTINCT** - вывести только уникальные значения.  
+**DISTINCT** - вывести только уникальные значения.  
 `SELECT DISTINCT gender FROM employee ORDER BY gender;` - выведем пол, неповторяющиеся записи (например хотим узнать какой вообще пол есть в таблице или из каких стран есть сотрудники, если добавить столбец со страной).  
 
-4. **WHERE** - логический оператор "Где", условие для выборки по конкретному значению.  
+**WHERE** - логический оператор "Где", условие для выборки по конкретному значению.  
 `SELECT * FROM employee WHERE gender = 'Female';` - выведем только женщин; 
 **AND**   
 `SELECT * FROM employee WHERE gender = 'Female' AND first_name = 'Hanna';` - выведем женщин с именем Hanna;  
@@ -190,3 +190,33 @@
 
 ### V. Базовая Арифметика и Агрегаты  
 
+1. Создадим новую таблицу - **holiday** (предположим, что работадатель оплачивает поездку в отпуск своим сотрудникам и ему нужно вести записи по таким событиям) 
+В *mockaroo* создадим следующие поля (см. скрин)  
+
+![](/PostgreeSQL/screen/22_mockaroo_holiday.jpg)
+
+2. Приведем запрос к следующему виду
+
+![](/PostgreeSQL/screen/22_mockaroo_holiday2.jpg)
+
+3. Импортируем в БД  
+
+![](/PostgreeSQL/screen/23_import_holiday.jpg)
+
+**MAX()** - вывести максимальное значение  
+**MIN()** - вывести минимальное значение 
+**AVG** - среднее значение 
+
+`SELECT MAX(price) FROM holiday;` - вывели максимальную стоимость путевки  
+
+`SELECT MIN(price) FROM holiday;` - вывели минимальную стоимость путевки  
+
+`SELECT AVG(price) FROM holiday;` - вывели среднюю стоимость путевки
+
+**ROUND** - округлить до целых  
+
+`SELECT ROUND(AVG(price)) FROM holiday;` - вывели среднее и округлили число до целых  
+
+Решили вывести самые дорогие направления, чтобы не давать туда путевки сотрудникам:  
+
+`SELECT distination_country, destination_city, MAX(price) FROM holiday GROUP BY distination_country, destination_city;`
