@@ -220,3 +220,61 @@
 Решили вывести самые дорогие направления, чтобы не давать туда путевки сотрудникам:  
 
 `SELECT distination_country, destination_city, MAX(price) FROM holiday GROUP BY distination_country, destination_city;`
+
+И вывели самые дешевые:  
+
+`SELECT distination_country, destination_city, MIN(price) FROM holiday GROUP BY distination_country, destination_city;`  
+
+**SUM** - сумма  
+
+`SELECT SUM(price) FROM holiday;` - вывели сумму всех записей в колонке **price**  
+
+`SELECT distination_country, SUM(price) FROM holiday GROUP BY distination_country;` - вывели путевок городов по странам  
+
+Арифметичесие операции:
+`SELECT 100 - 2;`  
+`SELECT 100 + 2;`  
+`SELECT 100 / 2;`  
+`SELECT 100 * 2;`  
+`SELECT 100 ^ 2;`  
+`SELECT 100 % 2;`  
+
+### VI. Работа с Датой и Временем
+
+`SELECT NOW();` - вывели текущее время (сейчас)  
+
+`SELECT NOW()::DATE;` - вывели только дату  
+
+`SELECT NOW()::TIME;` - вывели только время
+
+`SELECT NOW() - INTERVAL '100 YEAR';` - вывели дату-время 100 лет назад от текущего момента  
+
+`SELECT NOW() - INTERVAL '10 MONTHs';` - вывели дату-время 10 месяцев назад от текущ момента  
+
+`SELECT NOW() - INTERVAL '10 DAYS';` - вывели дату-время 10 дней назад от текущего момента  
+
+`SELECT NOW() - INTERVAL '10 DAYS';` - вперед 10 дней  
+
+**EXTRACT** - выборка определенного значения из даты  
+
+`SELECT EXTRACT(MONTH FROM NOW());` - вывели какой сейчас месяц  
+
+`SELECT EXTRACT(YEAR FROM NOW());` - вывели какой сейчас год  
+
+`SELECT EXTRACT(DOW FROM NOW());` - вывели какой сейчас по счету день недели (DOW - day of week)  
+
+**AGE** - высчитать и вывести возраст  
+
+`SELECT first_name, last_name, AGE(NOW(), date_of_birthd) AS age_person FROM employee;` - вывели текущий возраст сотрудников с именем столбца **age_person**  
+
+### VII. Primary Keys (Первичные ключи)  
+
+- это уникальный идентификатор записи, чтобы не возникало дублей.
+
+`ALTER TABLE employee DROP CONSTRAINT empliyee_pkey;` - удалили первичный ключ (т.е. поле id останется, а признак первичного ключа будет отключен), где **ALTER TABLE** - это **"изменить таблицу"** 
+
+`ALTER TABLE employee ADD PRIMARY KEY(id);` - назначили признак первичного ключа для поля **id**
+
+
+
+
